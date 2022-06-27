@@ -14,7 +14,9 @@ export type { collectionPagination } from './models/collectionPagination';
 export type { error } from './models/error';
 export type { errorResponse } from './models/errorResponse';
 export type { getAuthPermissionCollectionResponse } from './models/getAuthPermissionCollectionResponse';
+export type { newTestShopLink } from './models/newTestShopLink';
 
 export { AuthRoleIdentityService } from './services/AuthRoleIdentityService';
 export { AuthRoleService } from './services/AuthRoleService';
 export { DocsService } from './services/DocsService';
+export { TestShopRegisterService } from './services/TestShopRegisterService';
