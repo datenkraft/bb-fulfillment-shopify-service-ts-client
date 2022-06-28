@@ -2,7 +2,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { errorResponse } from '../models/errorResponse';
-import type { newTestShopLink } from '../models/newTestShopLink';
 import { request as __request } from '../core/request';
 
 export class TestShopRegisterService {
@@ -10,20 +9,28 @@ export class TestShopRegisterService {
     /**
      * Try to register shopify as a test shop.
      * Try to register shopify as a test shop.
-     * @param shopifyDomain Shopify domain
+     * @param requestBody
      * @returns errorResponse Unexpected error
-     * @returns newTestShopLink Created
+     * @returns any Created
      * @throws ApiError
      */
     public static async testShopRegister(
-        shopifyDomain: string,
-    ): Promise<errorResponse | newTestShopLink> {
+        requestBody: {
+            /**
+             * shopifyShopDomain
+             */
+            shopifyShopDomain?: string,
+        },
+    ): Promise<errorResponse | {
+        /**
+         * ShopCode
+         */
+        shopCode?: string,
+    }> {
         const result = await __request({
             method: 'POST',
             path: `/action/test-shop-register`,
-            query: {
-                'shopifyDomain': shopifyDomain,
-            },
+            body: requestBody,
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized`,

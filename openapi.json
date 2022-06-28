@@ -28,24 +28,35 @@
         "summary": "Try to register shopify as a test shop.",
         "description": "Try to register shopify as a test shop.",
         "operationId": "testShopRegister",
-        "parameters": [
-          {
-            "name": "shopifyDomain",
-            "in": "query",
-            "description": "Shopify domain",
-            "required": true,
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "shopifyShopDomain": {
+                    "description": "shopifyShopDomain",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "201": {
             "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/newTestShopLink"
+                  "properties": {
+                    "shopCode": {
+                      "description": "ShopCode",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
                 }
               }
             }
@@ -616,18 +627,6 @@
           },
           "message": {
             "description": "Message",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "newTestShopLink": {
-        "required": [
-          "shopCode"
-        ],
-        "properties": {
-          "shopCode": {
-            "description": "ShopCode",
             "type": "string"
           }
         },
