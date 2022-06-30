@@ -7,7 +7,7 @@ export namespace FulfillmentShopifyServiceClient {
       configOptions: ConfigOptions,
       endpointUrl: string | null = null
   ) {
-    OpenAPI.BASE = endpointUrl ?? process.env.X_DATENKRAFT_FULFILLMENT_SHOPIFY_SERIVE_URL ?? '';
+    OpenAPI.BASE = endpointUrl ?? process.env.X_DATENKRAFT_FULFILLMENT_SHOPIFY_SERVICE_URL ?? '';
     OpenAPI.TOKEN = await new Auth(new Config(configOptions)).getAccessToken();
   }
 
