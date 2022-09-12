@@ -18,4 +18,5 @@ export type { getAuthPermissionCollectionResponse } from './models/getAuthPermis
 export { AuthRoleIdentityService } from './services/AuthRoleIdentityService';
 export { AuthRoleService } from './services/AuthRoleService';
 export { DocsService } from './services/DocsService';
+export { ShopToggleSandboxModeService } from './services/ShopToggleSandboxModeService';
 export { TestShopRegisterService } from './services/TestShopRegisterService';
