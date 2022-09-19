@@ -236,86 +236,114 @@
         ]
       }
     },
-    "/docs": {
+    "/shop-info": {
       "get": {
         "tags": [
-          "docs"
+          "shop-info"
         ],
-        "summary": "Get the openapi documentation as json",
-        "description": "Get the openapi documentation as json",
-        "operationId": "getOpenApi",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": []
-      }
-    },
-    "/docs/openapi.{format}": {
-      "get": {
-        "tags": [
-          "docs"
-        ],
-        "summary": "Get the openapi documentation in the specified format (yaml or json)",
-        "description": "Get the openapi documentation in the specified format (yaml or json)",
-        "operationId": "getOpenApiInFormat",
+        "summary": "Get parameters for the shopify shop frontend (is Sandbox enabled etc.)",
+        "description": "Get parameters for the shopify shop frontend (is Sandbox enabled etc.)",
+        "operationId": "shopInfo",
         "parameters": [
           {
-            "name": "format",
-            "in": "path",
-            "description": "Openapi file format",
+            "name": "shopifyShopDomain",
+            "in": "query",
+            "description": "shopifyShopDomain",
             "required": true,
             "schema": {
-              "type": "string",
-              "enum": [
-                "yaml",
-                "json"
-              ]
-            }
+              "type": "string"
+            },
+            "example": "shop-name.myshopify.com"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/docs/changelog.{format}": {
-      "get": {
-        "tags": [
-          "docs"
-        ],
-        "summary": "Get the changelog in the specified format (Markdown or HTML)",
-        "description": "Get the changelog in the specified format (Markdown or HTML)",
-        "operationId": "getChangelogInFormat",
-        "parameters": [
-          {
-            "name": "format",
-            "in": "path",
-            "description": "Changelog file format",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "md",
-                "html"
-              ]
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "shopCode": {
+                      "description": "ShopCode",
+                      "type": "string"
+                    },
+                    "externalHmac": {
+                      "description": "ExternalHmac",
+                      "type": "string"
+                    },
+                    "isLinkedToStagingTestShop": {
+                      "description": "IsLinkedToStagingTestShop",
+                      "type": "boolean"
+                    },
+                    "isShopInSandboxMode": {
+                      "description": "IsShopInSandboxMode",
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           },
           "400": {
-            "description": "Invalid format"
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
           },
-          "404": {
-            "description": "Changelog not found"
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/auth/role": {
@@ -666,108 +694,92 @@
           }
         ]
       }
+    },
+    "/docs": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the openapi documentation as json",
+        "description": "Get the openapi documentation as json",
+        "operationId": "getOpenApi",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": []
+      }
+    },
+    "/docs/openapi.{format}": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the openapi documentation in the specified format (yaml or json)",
+        "description": "Get the openapi documentation in the specified format (yaml or json)",
+        "operationId": "getOpenApiInFormat",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Openapi file format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "yaml",
+                "json"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/docs/changelog.{format}": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the changelog in the specified format (Markdown or HTML)",
+        "description": "Get the changelog in the specified format (Markdown or HTML)",
+        "operationId": "getChangelogInFormat",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Changelog file format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "md",
+                "html"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Changelog not found"
+          },
+          "400": {
+            "description": "Invalid format"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "errorResponse": {
-        "properties": {
-          "errors": {
-            "description": "errors",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/error"
-            }
-          }
-        },
-        "type": "object"
-      },
-      "error": {
-        "required": [
-          "code",
-          "message"
-        ],
-        "properties": {
-          "code": {
-            "description": "Code",
-            "type": "string"
-          },
-          "message": {
-            "description": "Message",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authRoleIdentityCollection": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authRoleIdentityResource"
-        }
-      },
-      "authRoleIdentityResource": {
-        "required": [
-          "roleCode",
-          "identityId"
-        ],
-        "properties": {
-          "roleCode": {
-            "description": "Role Code",
-            "type": "string"
-          },
-          "identityId": {
-            "description": "Identity ID",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authPermissionResource": {
-        "required": [
-          "permissionCode",
-          "name"
-        ],
-        "properties": {
-          "permissionCode": {
-            "description": "Permission Code",
-            "type": "string"
-          },
-          "name": {
-            "description": "Name",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "getAuthPermissionCollectionResponse": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authPermissionResource"
-        }
-      },
-      "authRoleResource": {
-        "required": [
-          "roleCode",
-          "name"
-        ],
-        "properties": {
-          "roleCode": {
-            "description": "Role Code",
-            "type": "string"
-          },
-          "name": {
-            "description": "Name",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authRoleCollection": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authRoleResource"
-        }
-      },
       "collection": {
         "title": "collection",
         "properties": {
@@ -796,6 +808,104 @@
           }
         },
         "type": "object"
+      },
+      "authRoleResource": {
+        "required": [
+          "roleCode",
+          "name"
+        ],
+        "properties": {
+          "roleCode": {
+            "description": "Role Code",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "authRoleCollection": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authRoleResource"
+        }
+      },
+      "authRoleIdentityCollection": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authRoleIdentityResource"
+        }
+      },
+      "authRoleIdentityResource": {
+        "required": [
+          "roleCode",
+          "identityId"
+        ],
+        "properties": {
+          "roleCode": {
+            "description": "Role Code",
+            "type": "string"
+          },
+          "identityId": {
+            "description": "Identity ID",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "getAuthPermissionCollectionResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authPermissionResource"
+        }
+      },
+      "authPermissionResource": {
+        "required": [
+          "permissionCode",
+          "name"
+        ],
+        "properties": {
+          "permissionCode": {
+            "description": "Permission Code",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "errorResponse": {
+        "properties": {
+          "errors": {
+            "description": "errors",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "error": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "description": "Code",
+            "type": "string"
+          },
+          "message": {
+            "description": "Message",
+            "type": "string"
+          }
+        },
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -804,7 +914,7 @@
         "description": "OAuth2 Authorization",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": null,
+            "tokenUrl": "https://authentication-api.conqore.niceshops.com/oauth/token",
             "refreshUrl": "UNDEFINED",
             "scopes": {}
           }
