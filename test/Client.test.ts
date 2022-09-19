@@ -5,7 +5,7 @@ describe('Client Test (local)', () => {
   test('Initialize and use the generated Client', (done) => {
     const configOptions: ConfigOptions = {
       clientId: process.env.DEV_CLIENT_ID?? '',
-      clientSecret: process.env.DEV_CLIENT_SECRET ?? '',
+      clientSecret: process.env.DEV_CLIENT_SECRET_STAGING ?? '',
       oAuthTokenHost:
           'https://authentication-api.staging.backbone.datenkraft.info',
     };
