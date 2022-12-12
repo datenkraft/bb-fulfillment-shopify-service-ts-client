@@ -2,135 +2,16 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Shopify Fulfillment Service",
-    "description": "\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.",
+    "description": "\n- alpha: Currently developed API version. Subject to major changes.\n- beta: A semi-stable early access version. New features can be added. Breaking changes are possible.\n- stable: The API is recommended for use in production.\n\n[Changelog](https:\/\/fulfillment-service-sy.conqore.niceshops.com\/v1\/docs\/changelog.html)\n\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.\n\n[Shopify Fulfillment Service PHP client @Packagist](https:\/\/packagist.org\/packages\/datenkraft\/bb-fulfillment-shopify-service-php-client)",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "/v1",
+      "url": "https://fulfillment-service-sy.conqore.niceshops.com/v1",
       "description": "Production Server"
     }
   ],
   "paths": {
-    "/shopify/fulfillment-order/{fulfillmentOrderId}/fulfillment/{fulfillmentId}": {
-      "get": {
-        "tags": [
-          "shopify fulfillment"
-        ],
-        "summary": "Get a shopify fulfillment for a shop by the fulfillment order id and fulfillment id.",
-        "description": "Get a shopify fulfillment for a shop by the fulfillment order id and fulfillment id.",
-        "operationId": "getShopifyFulfillment",
-        "parameters": [
-          {
-            "name": "shop",
-            "in": "query",
-            "description": "shop",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fulfillmentOrderId",
-            "in": "path",
-            "description": "fulfillment order Id",
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "fulfillmentId",
-            "in": "path",
-            "description": "fulfillment Id",
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/shopifyFulfillment"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/errorResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oAuthAuthorization": []
-          },
-          {
-            "bearerAuth": []
-          }
-        ]
-      }
-    },
     "/shop-info": {
       "get": {
         "tags": [
@@ -244,7 +125,7 @@
     "/action/test-shop-register": {
       "post": {
         "tags": [
-          "test-shop-register"
+          "action"
         ],
         "summary": "Try to register shopify as a test shop.",
         "description": "Try to register shopify as a test shop.",
@@ -356,7 +237,7 @@
     "/action/shop-toggle-sandbox-mode": {
       "post": {
         "tags": [
-          "shop-toggle-sandbox-mode"
+          "action"
         ],
         "summary": "Toggle sandbox mode for a shop.",
         "description": "Toggle sandbox mode for a shop.",
@@ -465,86 +346,236 @@
         ]
       }
     },
-    "/docs": {
+    "/shopify/inventory_items/{productNumber}": {
       "get": {
         "tags": [
-          "docs"
+          "shopify"
         ],
-        "summary": "Get the openapi documentation as json",
-        "description": "Get the openapi documentation as json",
-        "operationId": "getOpenApi",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "security": []
-      }
-    },
-    "/docs/openapi.{format}": {
-      "get": {
-        "tags": [
-          "docs"
-        ],
-        "summary": "Get the openapi documentation in the specified format (yaml or json)",
-        "description": "Get the openapi documentation in the specified format (yaml or json)",
-        "operationId": "getOpenApiInFormat",
+        "summary": "Get a Inventory Item by its productNumber.",
+        "description": "Get a Inventory Item by its productNumber.",
+        "operationId": "getShopifyInventoryItem",
         "parameters": [
           {
-            "name": "format",
-            "in": "path",
-            "description": "Openapi file format",
+            "name": "shopifyShopDomain",
+            "in": "query",
+            "description": "shopifyShopDomain",
             "required": true,
             "schema": {
-              "type": "string",
-              "enum": [
-                "yaml",
-                "json"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/docs/changelog.{format}": {
-      "get": {
-        "tags": [
-          "docs"
-        ],
-        "summary": "Get the changelog in the specified format (Markdown or HTML)",
-        "description": "Get the changelog in the specified format (Markdown or HTML)",
-        "operationId": "getChangelogInFormat",
-        "parameters": [
-          {
-            "name": "format",
-            "in": "path",
-            "description": "Changelog file format",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "md",
-                "html"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+              "type": "string"
+            },
+            "example": "shop-name.myshopify.com"
           },
-          "404": {
-            "description": "Changelog not found"
+          {
+            "name": "productNumber",
+            "in": "path",
+            "description": "productNumber",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shopifyInventoryItem"
+                }
+              }
+            }
           },
           "400": {
-            "description": "Invalid format"
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/shopify/inventory_items": {
+      "get": {
+        "tags": [
+          "shopify"
+        ],
+        "summary": "Get a list of Inventory Items.",
+        "description": "Get a list of Inventory Items.",
+        "operationId": "getShopifyInventoryItemCollection",
+        "parameters": [
+          {
+            "name": "shopifyShopDomain",
+            "in": "query",
+            "description": "shopifyShopDomain",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "shop-name.myshopify.com"
+          },
+          {
+            "name": "filter[productNumbers]",
+            "in": "query",
+            "description": "Filter for productNumber/productNumbers.\\nThe maximum number of productNumbers allowed is 100.\\nThe values are separated by a comma.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "single productNumber": {
+                "summary": "single productNumber",
+                "value": "102030-large"
+              },
+              "multiple productNumbers": {
+                "summary": "multiple productNumbers",
+                "value": "102030-small,102030-large"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shopifyInventoryItemCollection"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
     "/auth/role": {
@@ -895,6 +926,88 @@
           }
         ]
       }
+    },
+    "/docs": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the openapi documentation as json",
+        "description": "Get the openapi documentation as json",
+        "operationId": "getOpenApi",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": []
+      }
+    },
+    "/docs/openapi.{format}": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the openapi documentation in the specified format (yaml or json)",
+        "description": "Get the openapi documentation in the specified format (yaml or json)",
+        "operationId": "getOpenApiInFormat",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Openapi file format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "yaml",
+                "json"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/docs/changelog.{format}": {
+      "get": {
+        "tags": [
+          "docs"
+        ],
+        "summary": "Get the changelog in the specified format (Markdown or HTML)",
+        "description": "Get the changelog in the specified format (Markdown or HTML)",
+        "operationId": "getChangelogInFormat",
+        "parameters": [
+          {
+            "name": "format",
+            "in": "path",
+            "description": "Changelog file format",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "md",
+                "html"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Changelog not found"
+          },
+          "400": {
+            "description": "Invalid format"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -928,165 +1041,6 @@
         },
         "type": "object"
       },
-      "shopifyFulfillment": {
-        "description": "A shopify fulfillment",
-        "properties": {
-          "id": {
-            "description": "id",
-            "type": "number"
-          },
-          "order_id": {
-            "description": "order id",
-            "type": "number"
-          },
-          "status": {
-            "description": "status",
-            "type": "string",
-            "enum": [
-              "pending",
-              "open",
-              "success",
-              "cancelled",
-              "error",
-              "failure"
-            ]
-          },
-          "created_at": {
-            "description": "created at",
-            "type": "string",
-            "format": "date-time"
-          },
-          "service": {
-            "description": "service",
-            "type": "string"
-          },
-          "updated_at": {
-            "description": "updated at",
-            "type": "string",
-            "format": "date-time"
-          },
-          "tracking_company": {
-            "description": "tracking company",
-            "type": "string"
-          },
-          "tracking_numbers": {
-            "description": "tracking numbers",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "shipment_status": {
-            "description": "shipment status",
-            "type": "string",
-            "enum": [
-              "label_printed",
-              "label_purchased",
-              "attempted_delivery",
-              "ready_for_pickup",
-              "confirmed",
-              "in_transit",
-              "out_for_delivery",
-              "delivered",
-              "failure"
-            ],
-            "nullable": true
-          },
-          "location_id": {
-            "description": "location id",
-            "type": "number"
-          },
-          "name": {
-            "description": "name",
-            "type": "string"
-          },
-          "notify_customer": {
-            "description": "notify customer",
-            "type": "boolean"
-          },
-          "tracking_urls": {
-            "description": "tracking urls",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "variant_inventory_management": {
-            "description": "variant inventory management",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authRoleIdentityCollection": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authRoleIdentityResource"
-        }
-      },
-      "authRoleIdentityResource": {
-        "required": [
-          "roleCode",
-          "identityId"
-        ],
-        "properties": {
-          "roleCode": {
-            "description": "Role Code",
-            "type": "string"
-          },
-          "identityId": {
-            "description": "Identity ID",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authPermissionResource": {
-        "required": [
-          "permissionCode",
-          "name"
-        ],
-        "properties": {
-          "permissionCode": {
-            "description": "Permission Code",
-            "type": "string"
-          },
-          "name": {
-            "description": "Name",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "getAuthPermissionCollectionResponse": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authPermissionResource"
-        }
-      },
-      "authRoleResource": {
-        "required": [
-          "roleCode",
-          "name"
-        ],
-        "properties": {
-          "roleCode": {
-            "description": "Role Code",
-            "type": "string"
-          },
-          "name": {
-            "description": "Name",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "authRoleCollection": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/authRoleResource"
-        }
-      },
       "collection": {
         "title": "collection",
         "properties": {
@@ -1115,6 +1069,103 @@
           }
         },
         "type": "object"
+      },
+      "shopifyInventoryItemCollection": {
+        "title": "shopifyInventoryItemCollection",
+        "description": "A collection of Inventory Items",
+        "properties": {
+          "data": {
+            "description": "",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shopifyInventoryItem"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "shopifyInventoryItem": {
+        "description": "A shopify Inventory Item",
+        "properties": {
+          "id": {
+            "description": "id",
+            "type": "number"
+          },
+          "productNumber": {
+            "description": "product number",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "getAuthPermissionCollectionResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authPermissionResource"
+        }
+      },
+      "authPermissionResource": {
+        "required": [
+          "permissionCode",
+          "name"
+        ],
+        "properties": {
+          "permissionCode": {
+            "description": "Permission Code",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "authRoleResource": {
+        "required": [
+          "roleCode",
+          "name"
+        ],
+        "properties": {
+          "roleCode": {
+            "description": "Role Code",
+            "type": "string"
+          },
+          "name": {
+            "description": "Name",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "authRoleCollection": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authRoleResource"
+        }
+      },
+      "authRoleIdentityCollection": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/authRoleIdentityResource"
+        }
+      },
+      "authRoleIdentityResource": {
+        "required": [
+          "roleCode",
+          "identityId"
+        ],
+        "properties": {
+          "roleCode": {
+            "description": "Role Code",
+            "type": "string"
+          },
+          "identityId": {
+            "description": "Identity ID",
+            "type": "string"
+          }
+        },
+        "type": "object"
       }
     },
     "securitySchemes": {
@@ -1123,7 +1174,7 @@
         "description": "OAuth2 Authorization",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": null,
+            "tokenUrl": "https://authentication-api.conqore.niceshops.com/oauth/token",
             "refreshUrl": "UNDEFINED",
             "scopes": {}
           }

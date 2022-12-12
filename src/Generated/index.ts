@@ -14,12 +14,12 @@ export type { collectionPagination } from './models/collectionPagination';
 export type { error } from './models/error';
 export type { errorResponse } from './models/errorResponse';
 export type { getAuthPermissionCollectionResponse } from './models/getAuthPermissionCollectionResponse';
-export { shopifyFulfillment } from './models/shopifyFulfillment';
+export type { shopifyInventoryItem } from './models/shopifyInventoryItem';
+export type { shopifyInventoryItemCollection } from './models/shopifyInventoryItemCollection';
 
+export { ActionService } from './services/ActionService';
 export { AuthRoleIdentityService } from './services/AuthRoleIdentityService';
 export { AuthRoleService } from './services/AuthRoleService';
 export { DocsService } from './services/DocsService';
-export { ShopifyFulfillmentService } from './services/ShopifyFulfillmentService';
+export { ShopifyService } from './services/ShopifyService';
 export { ShopInfoService } from './services/ShopInfoService';
-export { ShopToggleSandboxModeService } from './services/ShopToggleSandboxModeService';
-export { TestShopRegisterService } from './services/TestShopRegisterService';
