@@ -2,30 +2,33 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { errorResponse } from '../models/errorResponse';
-import type { shopifyInventoryItem } from '../models/shopifyInventoryItem';
 import type { shopifyInventoryItemCollection } from '../models/shopifyInventoryItemCollection';
+import type { shopifyProductVariantCollection } from '../models/shopifyProductVariantCollection';
 import { request as __request } from '../core/request';
 
 export class ShopifyService {
 
     /**
-     * Get a Inventory Item by its productNumber.
-     * Get a Inventory Item by its productNumber.
+     * Get a list of Inventory Items.
+     * Get a list of Inventory Items..
      * @param shopifyShopDomain shopifyShopDomain
-     * @param productNumber productNumber
-     * @returns shopifyInventoryItem OK
+     * @param filterProductNumbers Filter for productNumber/productNumbers.
+     * The maximum number of productNumbers allowed is 100.
+     * The values must be separated by a comma.
+     * @returns shopifyInventoryItemCollection OK
      * @returns errorResponse Unexpected error
      * @throws ApiError
      */
-    public static async getShopifyInventoryItem(
+    public static async getShopifyInventoryItemCollection(
         shopifyShopDomain: string,
-        productNumber: string,
-    ): Promise<shopifyInventoryItem | errorResponse> {
+        filterProductNumbers: string,
+    ): Promise<shopifyInventoryItemCollection | errorResponse> {
         const result = await __request({
             method: 'GET',
-            path: `/shopify/inventory_items/${productNumber}`,
+            path: `/shopify/inventory_items`,
             query: {
                 'shopifyShopDomain': shopifyShopDomain,
+                'filter[productNumbers]': filterProductNumbers,
             },
             errors: {
                 400: `Bad Request`,
@@ -39,21 +42,23 @@ export class ShopifyService {
     }
 
     /**
-     * Get a list of Inventory Items.
-     * Get a list of Inventory Items.
+     * Get a list of Product Variants.
+     * Get a list of Product Variants.
      * @param shopifyShopDomain shopifyShopDomain
-     * @param filterProductNumbers Filter for productNumber/productNumbers.\nThe maximum number of productNumbers allowed is 100.\nThe values are separated by a comma.
-     * @returns shopifyInventoryItemCollection OK
+     * @param filterProductNumbers Filter for productNumber/productNumbers.
+     * The maximum number of productNumbers allowed is 100.
+     * The values must be separated by a comma.
+     * @returns shopifyProductVariantCollection OK
      * @returns errorResponse Unexpected error
      * @throws ApiError
      */
-    public static async getShopifyInventoryItemCollection(
+    public static async getShopifyProductVariantCollection(
         shopifyShopDomain: string,
         filterProductNumbers: string,
-    ): Promise<shopifyInventoryItemCollection | errorResponse> {
+    ): Promise<shopifyProductVariantCollection | errorResponse> {
         const result = await __request({
             method: 'GET',
-            path: `/shopify/inventory_items`,
+            path: `/shopify/products/variants`,
             query: {
                 'shopifyShopDomain': shopifyShopDomain,
                 'filter[productNumbers]': filterProductNumbers,

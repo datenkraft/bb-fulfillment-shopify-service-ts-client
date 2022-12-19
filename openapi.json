@@ -346,14 +346,14 @@
         ]
       }
     },
-    "/shopify/inventory_items/{productNumber}": {
+    "/shopify/inventory_items": {
       "get": {
         "tags": [
           "shopify"
         ],
-        "summary": "Get a Inventory Item by its productNumber.",
-        "description": "Get a Inventory Item by its productNumber.",
-        "operationId": "getShopifyInventoryItem",
+        "summary": "Get a list of Inventory Items.",
+        "description": "Get a list of Inventory Items..",
+        "operationId": "getShopifyInventoryItemCollection",
         "parameters": [
           {
             "name": "shopifyShopDomain",
@@ -366,12 +366,22 @@
             "example": "shop-name.myshopify.com"
           },
           {
-            "name": "productNumber",
-            "in": "path",
-            "description": "productNumber",
+            "name": "filter[productNumbers]",
+            "in": "query",
+            "description": "Filter for productNumber/productNumbers.\nThe maximum number of productNumbers allowed is 100.\nThe values must be separated by a comma.",
             "required": true,
             "schema": {
               "type": "string"
+            },
+            "examples": {
+              "single productNumber": {
+                "summary": "single productNumber",
+                "value": "102030-large"
+              },
+              "multiple productNumbers": {
+                "summary": "multiple productNumbers",
+                "value": "102030-small,102030-large"
+              }
             }
           }
         ],
@@ -381,7 +391,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/shopifyInventoryItem"
+                  "$ref": "#/components/schemas/shopifyInventoryItemCollection"
                 }
               }
             }
@@ -457,14 +467,14 @@
         ]
       }
     },
-    "/shopify/inventory_items": {
+    "/shopify/products/variants": {
       "get": {
         "tags": [
           "shopify"
         ],
-        "summary": "Get a list of Inventory Items.",
-        "description": "Get a list of Inventory Items.",
-        "operationId": "getShopifyInventoryItemCollection",
+        "summary": "Get a list of Product Variants.",
+        "description": "Get a list of Product Variants.",
+        "operationId": "getShopifyProductVariantCollection",
         "parameters": [
           {
             "name": "shopifyShopDomain",
@@ -479,7 +489,7 @@
           {
             "name": "filter[productNumbers]",
             "in": "query",
-            "description": "Filter for productNumber/productNumbers.\\nThe maximum number of productNumbers allowed is 100.\\nThe values are separated by a comma.",
+            "description": "Filter for productNumber/productNumbers.\n    The maximum number of productNumbers allowed is 100.\n    The values must be separated by a comma.",
             "required": true,
             "schema": {
               "type": "string"
@@ -502,7 +512,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/shopifyInventoryItemCollection"
+                  "$ref": "#/components/schemas/shopifyProductVariantCollection"
                 }
               }
             }
@@ -948,8 +958,8 @@
         "tags": [
           "docs"
         ],
-        "summary": "Get the openapi documentation in the specified format (yaml or json)",
-        "description": "Get the openapi documentation in the specified format (yaml or json)",
+        "summary": "Get the openapi documentation in the specified format",
+        "description": "Get the openapi documentation in the specified format",
         "operationId": "getOpenApiInFormat",
         "parameters": [
           {
@@ -978,8 +988,8 @@
         "tags": [
           "docs"
         ],
-        "summary": "Get the changelog in the specified format (Markdown or HTML)",
-        "description": "Get the changelog in the specified format (Markdown or HTML)",
+        "summary": "Get the changelog in the specified format",
+        "description": "Get the changelog in the specified format",
         "operationId": "getChangelogInFormat",
         "parameters": [
           {
@@ -1066,6 +1076,46 @@
             "description": "The page size used for reading the collection.",
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "type": "object"
+      },
+      "shopifyProductVariantCollection": {
+        "title": "shopifyProductVariantCollection",
+        "description": "A collection of Product Variants",
+        "properties": {
+          "data": {
+            "description": "",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shopifyProductVariant"
+            }
+          }
+        },
+        "type": "object"
+      },
+      "shopifyProductVariant": {
+        "description": "A shopify Product Variant",
+        "properties": {
+          "id": {
+            "description": "id",
+            "type": "number"
+          },
+          "inventoryItemId": {
+            "description": "inventoryItemId",
+            "type": "number"
+          },
+          "productId": {
+            "description": "productId",
+            "type": "number"
+          },
+          "title": {
+            "description": "title",
+            "type": "string"
+          },
+          "productNumber": {
+            "description": "product number",
+            "type": "string"
           }
         },
         "type": "object"

@@ -16,6 +16,8 @@ export type { errorResponse } from './models/errorResponse';
 export type { getAuthPermissionCollectionResponse } from './models/getAuthPermissionCollectionResponse';
 export type { shopifyInventoryItem } from './models/shopifyInventoryItem';
 export type { shopifyInventoryItemCollection } from './models/shopifyInventoryItemCollection';
+export type { shopifyProductVariant } from './models/shopifyProductVariant';
+export type { shopifyProductVariantCollection } from './models/shopifyProductVariantCollection';
 
 export { ActionService } from './services/ActionService';
 export { AuthRoleIdentityService } from './services/AuthRoleIdentityService';
