@@ -14,6 +14,8 @@ export type { collectionPagination } from './models/collectionPagination';
 export type { error } from './models/error';
 export type { errorResponse } from './models/errorResponse';
 export type { getAuthPermissionCollectionResponse } from './models/getAuthPermissionCollectionResponse';
+export type { information } from './models/information';
+export type { informationResponse } from './models/informationResponse';
 export type { shopifyInventoryItem } from './models/shopifyInventoryItem';
 export type { shopifyInventoryItemCollection } from './models/shopifyInventoryItemCollection';
 export type { shopifyProductVariant } from './models/shopifyProductVariant';
