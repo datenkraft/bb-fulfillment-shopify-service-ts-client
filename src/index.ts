@@ -9,7 +9,7 @@ export namespace FulfillmentShopifyServiceApiClient {
     return new Configuration({
       basePath:
         endpointUrl ??
-        process.env.X_DATENKRAFT_FULFILLMENT_SHOPIFY_SERVICE_API_URL ??
+        process.env.X_DATENKRAFT_FULFILLMENT_SHOPIFY_SERVICE_URL ??
         "",
       accessToken: await new Auth(new Config(configOption)).getAccessToken(),
     });
