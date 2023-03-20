@@ -24,7 +24,7 @@ describe("Client Test (staging)", () => {
             if (response instanceof Array) {
               expect(response).toContainEqual({
                 roleCode:
-                  "bb-fulfillment-shopify-service-api/auth_access-management",
+                  "bb-fulfillment-shopify-service/auth_access-management",
                 name: "Role for access management",
               });
               done();
