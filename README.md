@@ -13,7 +13,7 @@ The fulfillment-shopify-service API TS Client enables you to work with the fulfi
 You can use [npm](https://www.npmjs.com/) to install the package.
 
 ```bash
-npm install @datenkraft/bb-fulfillment-shopify-service-api-ts-client
+npm install @datenkraft/bb-fulfillment-shopify-service-ts-client
 ```
 
 ## Using the package
@@ -26,8 +26,8 @@ The Client is auto-generated with [OpenAPITools](https://openapi-generator.tech/
 
 ```typescript
 import { ConfigOptions } from '@datenkraft/bb-base-api-ts-client';
-import { FulfillmentShopifyServiceApiClient } from '@datenkraft/bb-fulfillment-shopify-service-api-ts-client';
-import { XxxApi } from '@datenkraft/bb-fulfillment-shopify-service-api-ts-client/Generated';
+import { FulfillmentShopifyServiceClient } from '@datenkraft/bb-fulfillment-shopify-service-ts-client';
+import { XxxApi } from '@datenkraft/bb-fulfillment-shopify-service-ts-client/Generated';
 
 const configOptions: ConfigOptions = {
   clientId: 'clientId',
@@ -38,7 +38,7 @@ const configOptions: ConfigOptions = {
   useExternalIdToken: true,
 };
 
-FulfillmentShopifyServiceApiClient.getApiConfig(configOptions).then((config) => {
+FulfillmentShopifyServiceClient.getApiConfig(configOptions).then((config) => {
   const XxxApi = new XxxApi(config);
   XxxApi.getXxxCollection().then((data) => {});
 });

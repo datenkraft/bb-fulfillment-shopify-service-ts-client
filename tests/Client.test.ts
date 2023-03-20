@@ -1,5 +1,5 @@
 import { ConfigOptions } from "@datenkraft/bb-base-api-ts-client";
-import { FulfillmentShopifyServiceApiClient } from "../dist";
+import { FulfillmentShopifyServiceClient } from "../dist";
 import { AuthRoleApi } from "../dist/Generated";
 
 describe("Client Test (staging)", () => {
@@ -11,7 +11,7 @@ describe("Client Test (staging)", () => {
         "https://authentication-api.staging.backbone.datenkraft.info",
     };
 
-    FulfillmentShopifyServiceApiClient.getApiConfig(
+    FulfillmentShopifyServiceClient.getApiConfig(
       configOptions,
       "https://fulfillment-service-sy.staging.backbone.datenkraft.info/v1"
     )

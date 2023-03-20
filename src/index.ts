@@ -1,7 +1,7 @@
 import { Auth, Config, ConfigOptions } from "@datenkraft/bb-base-api-ts-client";
 import { Configuration } from "./Generated";
 
-export namespace FulfillmentShopifyServiceApiClient {
+export namespace FulfillmentShopifyServiceClient {
   export async function getApiConfig(
     configOption: ConfigOptions,
     endpointUrl: string | null = null
