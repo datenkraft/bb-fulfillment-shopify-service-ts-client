@@ -15,6 +15,7 @@
 
 
 export * from './apis/action-api';
+export * from './apis/audit-log-api';
 export * from './apis/auth-permission-api';
 export * from './apis/auth-permission-role-api';
 export * from './apis/auth-role-api';

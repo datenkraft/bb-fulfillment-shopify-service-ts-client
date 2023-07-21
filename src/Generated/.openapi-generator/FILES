@@ -2,6 +2,7 @@
 .npmignore
 api.ts
 apis/action-api.ts
+apis/audit-log-api.ts
 apis/auth-permission-api.ts
 apis/auth-permission-role-api.ts
 apis/auth-role-api.ts
@@ -14,6 +15,9 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+models/audit-log-collection-all-of.ts
+models/audit-log-collection.ts
+models/audit-log.ts
 models/auth-permission-resource.ts
 models/auth-permission-role-resource.ts
 models/auth-role-identity-resource.ts
@@ -27,9 +31,9 @@ models/information.ts
 models/model-error.ts
 models/new-auth-role-resource.ts
 models/shop-info200-response.ts
+models/shop-toggle-sandbox-mode-request.ts
+models/shop-toggle-sandbox-mode201-response.ts
 models/shopify-inventory-item-collection.ts
 models/shopify-inventory-item.ts
 models/shopify-product-variant-collection.ts
 models/shopify-product-variant.ts
-models/test-shop-register-request.ts
-models/test-shop-register201-response.ts

@@ -17,13 +17,13 @@
 /**
  * 
  * @export
- * @interface TestShopRegisterRequest
+ * @interface ShopToggleSandboxModeRequest
  */
-export interface TestShopRegisterRequest {
+export interface ShopToggleSandboxModeRequest {
     /**
      * shopifyShopDomain
      * @type {string}
-     * @memberof TestShopRegisterRequest
+     * @memberof ShopToggleSandboxModeRequest
      */
     'shopifyShopDomain'?: string;
 }
