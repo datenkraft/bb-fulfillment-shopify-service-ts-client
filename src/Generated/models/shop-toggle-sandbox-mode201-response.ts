@@ -17,13 +17,13 @@
 /**
  * 
  * @export
- * @interface TestShopRegister201Response
+ * @interface ShopToggleSandboxMode201Response
  */
-export interface TestShopRegister201Response {
+export interface ShopToggleSandboxMode201Response {
     /**
      * ShopCode
      * @type {string}
-     * @memberof TestShopRegister201Response
+     * @memberof ShopToggleSandboxMode201Response
      */
     'shopCode'?: string;
 }

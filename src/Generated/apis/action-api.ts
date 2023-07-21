@@ -27,9 +27,9 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
-import { TestShopRegister201Response } from '../models';
+import { ShopToggleSandboxMode201Response } from '../models';
 // @ts-ignore
-import { TestShopRegisterRequest } from '../models';
+import { ShopToggleSandboxModeRequest } from '../models';
 /**
  * ActionApi - axios parameter creator
  * @export
@@ -39,13 +39,13 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        shopToggleSandboxMode: async (testShopRegisterRequest: TestShopRegisterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'testShopRegisterRequest' is not null or undefined
-            assertParamExists('shopToggleSandboxMode', 'testShopRegisterRequest', testShopRegisterRequest)
+        shopToggleSandboxMode: async (shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'shopToggleSandboxModeRequest' is not null or undefined
+            assertParamExists('shopToggleSandboxMode', 'shopToggleSandboxModeRequest', shopToggleSandboxModeRequest)
             const localVarPath = `/action/shop-toggle-sandbox-mode`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -73,7 +73,7 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(testShopRegisterRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(shopToggleSandboxModeRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -83,13 +83,13 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister: async (testShopRegisterRequest: TestShopRegisterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'testShopRegisterRequest' is not null or undefined
-            assertParamExists('testShopRegister', 'testShopRegisterRequest', testShopRegisterRequest)
+        testShopRegister: async (shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'shopToggleSandboxModeRequest' is not null or undefined
+            assertParamExists('testShopRegister', 'shopToggleSandboxModeRequest', shopToggleSandboxModeRequest)
             const localVarPath = `/action/test-shop-register`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -117,7 +117,7 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(testShopRegisterRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(shopToggleSandboxModeRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -137,23 +137,23 @@ export const ActionApiFp = function(configuration?: Configuration) {
         /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async shopToggleSandboxMode(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopRegister201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shopToggleSandboxMode(testShopRegisterRequest, options);
+        async shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.shopToggleSandboxMode(shopToggleSandboxModeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testShopRegister(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopRegister201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(testShopRegisterRequest, options);
+        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(shopToggleSandboxModeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -169,22 +169,22 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
         /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        shopToggleSandboxMode(testShopRegisterRequest: TestShopRegisterRequest, options?: any): AxiosPromise<TestShopRegister201Response> {
-            return localVarFp.shopToggleSandboxMode(testShopRegisterRequest, options).then((request) => request(axios, basePath));
+        shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode201Response> {
+            return localVarFp.shopToggleSandboxMode(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {TestShopRegisterRequest} testShopRegisterRequest 
+         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister(testShopRegisterRequest: TestShopRegisterRequest, options?: any): AxiosPromise<TestShopRegister201Response> {
-            return localVarFp.testShopRegister(testShopRegisterRequest, options).then((request) => request(axios, basePath));
+        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode201Response> {
+            return localVarFp.testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -198,22 +198,22 @@ export interface ActionApiInterface {
     /**
      * Toggle sandbox mode for a shop.
      * @summary Toggle sandbox mode for a shop.
-     * @param {TestShopRegisterRequest} testShopRegisterRequest 
+     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    shopToggleSandboxMode(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig): AxiosPromise<TestShopRegister201Response>;
+    shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode201Response>;
 
     /**
      * Try to register shopify as a test shop.
      * @summary Try to register shopify as a test shop.
-     * @param {TestShopRegisterRequest} testShopRegisterRequest 
+     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    testShopRegister(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig): AxiosPromise<TestShopRegister201Response>;
+    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode201Response>;
 
 }
 
@@ -227,24 +227,24 @@ export class ActionApi extends BaseAPI implements ActionApiInterface {
     /**
      * Toggle sandbox mode for a shop.
      * @summary Toggle sandbox mode for a shop.
-     * @param {TestShopRegisterRequest} testShopRegisterRequest 
+     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public shopToggleSandboxMode(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig) {
-        return ActionApiFp(this.configuration).shopToggleSandboxMode(testShopRegisterRequest, options).then((request) => request(this.axios, this.basePath));
+    public shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).shopToggleSandboxMode(shopToggleSandboxModeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Try to register shopify as a test shop.
      * @summary Try to register shopify as a test shop.
-     * @param {TestShopRegisterRequest} testShopRegisterRequest 
+     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public testShopRegister(testShopRegisterRequest: TestShopRegisterRequest, options?: AxiosRequestConfig) {
-        return ActionApiFp(this.configuration).testShopRegister(testShopRegisterRequest, options).then((request) => request(this.axios, this.basePath));
+    public testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
