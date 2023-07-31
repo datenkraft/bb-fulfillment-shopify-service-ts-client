@@ -24,6 +24,7 @@ models/auth-role-identity-resource.ts
 models/auth-role-resource.ts
 models/collection-pagination.ts
 models/collection.ts
+models/error-references-inner.ts
 models/error-response.ts
 models/index.ts
 models/information-response.ts
