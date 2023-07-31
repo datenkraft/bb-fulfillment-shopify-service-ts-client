@@ -7,6 +7,7 @@ export * from './auth-role-identity-resource';
 export * from './auth-role-resource';
 export * from './collection';
 export * from './collection-pagination';
+export * from './error-references-inner';
 export * from './error-response';
 export * from './information';
 export * from './information-response';
