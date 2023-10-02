@@ -17,14 +17,14 @@
 /**
  * 
  * @export
- * @interface ShopToggleSandboxMode201Response
+ * @interface TestShopReset200Response
  */
-export interface ShopToggleSandboxMode201Response {
+export interface TestShopReset200Response {
     /**
-     * ShopCode
+     * Date. Format in ISO 8601.
      * @type {string}
-     * @memberof ShopToggleSandboxMode201Response
+     * @memberof TestShopReset200Response
      */
-    'shopCode'?: string;
+    'date'?: string;
 }
 

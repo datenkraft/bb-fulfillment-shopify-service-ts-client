@@ -41,8 +41,9 @@ models/model-error.ts
 models/new-auth-role-resource.ts
 models/shop-info200-response.ts
 models/shop-toggle-sandbox-mode-request.ts
-models/shop-toggle-sandbox-mode201-response.ts
+models/shop-toggle-sandbox-mode200-response.ts
 models/shopify-inventory-item-collection.ts
 models/shopify-inventory-item.ts
 models/shopify-product-variant-collection.ts
 models/shopify-product-variant.ts
+models/test-shop-reset200-response.ts
