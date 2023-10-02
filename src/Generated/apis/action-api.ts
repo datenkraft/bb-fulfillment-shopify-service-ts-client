@@ -27,9 +27,11 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
-import { ShopToggleSandboxMode201Response } from '../models';
+import { ShopToggleSandboxMode200Response } from '../models';
 // @ts-ignore
 import { ShopToggleSandboxModeRequest } from '../models';
+// @ts-ignore
+import { TestShopReset200Response } from '../models';
 /**
  * ActionApi - axios parameter creator
  * @export
@@ -124,6 +126,44 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Reset all test shops.
+         * @summary Reset all test shops.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        testShopReset: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/action/test-shop-reset`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oAuthAuthorization required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oAuthAuthorization", [], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -141,7 +181,7 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode201Response>> {
+        async shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.shopToggleSandboxMode(shopToggleSandboxModeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -152,8 +192,18 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode201Response>> {
+        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(shopToggleSandboxModeRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Reset all test shops.
+         * @summary Reset all test shops.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async testShopReset(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopReset200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.testShopReset(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -173,7 +223,7 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode201Response> {
+        shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode200Response> {
             return localVarFp.shopToggleSandboxMode(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -183,8 +233,17 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode201Response> {
+        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode200Response> {
             return localVarFp.testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Reset all test shops.
+         * @summary Reset all test shops.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        testShopReset(options?: any): AxiosPromise<TestShopReset200Response> {
+            return localVarFp.testShopReset(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -203,7 +262,7 @@ export interface ActionApiInterface {
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode201Response>;
+    shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode200Response>;
 
     /**
      * Try to register shopify as a test shop.
@@ -213,7 +272,16 @@ export interface ActionApiInterface {
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode201Response>;
+    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode200Response>;
+
+    /**
+     * Reset all test shops.
+     * @summary Reset all test shops.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApiInterface
+     */
+    testShopReset(options?: AxiosRequestConfig): AxiosPromise<TestShopReset200Response>;
 
 }
 
@@ -246,5 +314,16 @@ export class ActionApi extends BaseAPI implements ActionApiInterface {
      */
     public testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig) {
         return ActionApiFp(this.configuration).testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Reset all test shops.
+     * @summary Reset all test shops.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApi
+     */
+    public testShopReset(options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).testShopReset(options).then((request) => request(this.axios, this.basePath));
     }
 }
