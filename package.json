@@ -1,7 +1,7 @@
 {
   "name": "@datenkraft/bb-fulfillment-shopify-service-ts-client",
   "homepage": "https://bitbucket.org/datenkraft/bb-fulfillment-shopify-service-ts-client#readme",
-  "version": "1.6.10",
+  "version": "1.6.11",
   "description": "The fulfillment-shopify-service API TS Client enables you to work with the fulfillment-shopify-service API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
