@@ -10,8 +10,8 @@ export class ActionService {
      * Toggle sandbox mode for a shop.
      * Toggle sandbox mode for a shop.
      * @param requestBody
+     * @returns any OK
      * @returns errorResponse Unexpected error
-     * @returns any Created
      * @throws ApiError
      */
     public static async shopToggleSandboxMode(
@@ -21,12 +21,12 @@ export class ActionService {
              */
             shopifyShopDomain?: string,
         },
-    ): Promise<errorResponse | {
+    ): Promise<{
         /**
          * ShopCode
          */
         shopCode?: string,
-    }> {
+    } | errorResponse> {
         const result = await __request({
             method: 'POST',
             path: `/action/shop-toggle-sandbox-mode`,
@@ -46,8 +46,8 @@ export class ActionService {
      * Try to register shopify as a test shop.
      * Try to register shopify as a test shop.
      * @param requestBody
+     * @returns any OK
      * @returns errorResponse Unexpected error
-     * @returns any Created
      * @throws ApiError
      */
     public static async testShopRegister(
@@ -57,12 +57,12 @@ export class ActionService {
              */
             shopifyShopDomain?: string,
         },
-    ): Promise<errorResponse | {
+    ): Promise<{
         /**
          * ShopCode
          */
         shopCode?: string,
-    }> {
+    } | errorResponse> {
         const result = await __request({
             method: 'POST',
             path: `/action/test-shop-register`,
@@ -72,6 +72,31 @@ export class ActionService {
                 401: `Unauthorized`,
                 403: `Forbidden`,
                 422: `Unprocessable Entity`,
+                500: `Server error`,
+            },
+        });
+        return result.body;
+    }
+
+    /**
+     * Reset all test shops.
+     * Reset all test shops.
+     * @returns any OK
+     * @returns errorResponse Unexpected error
+     * @throws ApiError
+     */
+    public static async testShopReset(): Promise<{
+        /**
+         * Date. Format in ISO 8601.
+         */
+        date?: string,
+    } | errorResponse> {
+        const result = await __request({
+            method: 'POST',
+            path: `/action/test-shop-reset`,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
                 500: `Server error`,
             },
         });
