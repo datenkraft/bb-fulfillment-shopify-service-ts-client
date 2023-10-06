@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Shopify Fulfillment Service
- *  - alpha: Currently developed API version. Subject to major changes. - beta: A semi-stable early access version. New features can be added. Breaking changes are possible. - stable: The API is recommended for use in production.  [Changelog](https://fulfillment-service-sy.conqore.niceshops.com/v1/docs/changelog.html)  All data is transferred in UTF-8 encoding.\\ The API uses stateless HTTP. No cookies have to be kept.\\ Authentication via OAuth2 client credentials flow.  [Privacy Policy](https://www.niceshops.com/en/dienstleistungen/data-privacy-policy)  [Shopify Fulfillment Service PHP client @Packagist](https://packagist.org/packages/datenkraft/bb-fulfillment-shopify-service-php-client)
+ *  - alpha: Currently developed API version. Subject to major changes. - beta: A semi-stable early access version. New features can be added. Breaking changes are possible. - stable: The API is recommended for use in production.  [Changelog](https://fulfillment-service-sy.steve.niceshops.com/v1/docs/changelog.html)  All data is transferred in UTF-8 encoding.\\ The API uses stateless HTTP. No cookies have to be kept.\\ Authentication via OAuth2 client credentials flow.  [Privacy Policy](https://www.niceshops.com/en/dienstleistungen/data-privacy-policy)  [Shopify Fulfillment Service PHP client @Packagist](https://packagist.org/packages/datenkraft/bb-fulfillment-shopify-service-php-client)
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -19,7 +19,7 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
-export const BASE_PATH = "https://fulfillment-service-sy.conqore.niceshops.com/v1".replace(/\/+$/, "");
+export const BASE_PATH = "https://fulfillment-service-sy.steve.niceshops.com/v1".replace(/\/+$/, "");
 
 /**
  *
