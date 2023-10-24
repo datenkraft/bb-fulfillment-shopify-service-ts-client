@@ -7,6 +7,114 @@ import { request as __request } from '../core/request';
 export class ActionService {
 
     /**
+     * Create test products for a shop
+     * Create test products for a shop
+     * @param requestBody
+     * @returns any OK
+     * @returns errorResponse Unexpected Error
+     * @throws ApiError
+     */
+    public static async postActionShopCreateTestProducts(
+        requestBody: {
+            /**
+             * Domain of the shop the test products should be created for
+             */
+            shopifyShopDomain?: string,
+        },
+    ): Promise<{
+        /**
+         * The productNumbers of the created products
+         */
+        productNumbers?: Array<string>,
+    } | errorResponse> {
+        const result = await __request({
+            method: 'POST',
+            path: `/action/shop-create-test-products`,
+            body: requestBody,
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                422: `Unprocessable Entity`,
+                500: `Server Error`,
+            },
+        });
+        return result.body;
+    }
+
+    /**
+     * Execute the cleanup after the creation test products for a shop
+     * Execute the cleanup after the creation test products for a shop
+     * @param requestBody
+     * @returns any OK
+     * @returns errorResponse Unexpected Error
+     * @throws ApiError
+     */
+    public static async postActionShopCreateTestProductsCleanup(
+        requestBody: {
+            /**
+             * Domain of the shop the test products should be created for
+             */
+            shopifyShopDomain?: string,
+        },
+    ): Promise<{
+        /**
+         * The OAuth login URL that must be called to complete the cleanup
+         */
+        oAuthLoginUrl?: string | null,
+    } | errorResponse> {
+        const result = await __request({
+            method: 'POST',
+            path: `/action/shop-create-test-products/cleanup`,
+            body: requestBody,
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                422: `Unprocessable Entity`,
+                500: `Server Error`,
+            },
+        });
+        return result.body;
+    }
+
+    /**
+     * Execute the initialization for before creation test products for a shop
+     * Execute the initialization before the creation test products for a shop
+     * @param requestBody
+     * @returns any OK
+     * @returns errorResponse Unexpected Error
+     * @throws ApiError
+     */
+    public static async postActionShopCreateTestProductsInitialize(
+        requestBody: {
+            /**
+             * Domain of the shop the test products should be created for
+             */
+            shopifyShopDomain?: string,
+        },
+    ): Promise<{
+        /**
+         * The OAuth login URL that must be called to complete the initialization
+         */
+        oAuthLoginUrl?: string | null,
+    } | errorResponse> {
+        const result = await __request({
+            method: 'POST',
+            path: `/action/shop-create-test-products/initialize`,
+            body: requestBody,
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                422: `Unprocessable Entity`,
+                500: `Server Error`,
+            },
+        });
+        return result.body;
+    }
+
+    /**
      * Toggle sandbox mode for a shop.
      * Toggle sandbox mode for a shop.
      * @param requestBody
