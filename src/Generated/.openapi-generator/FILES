@@ -39,6 +39,10 @@ models/information-response.ts
 models/information.ts
 models/model-error.ts
 models/new-auth-role-resource.ts
+models/post-action-shop-create-test-products-cleanup200-response.ts
+models/post-action-shop-create-test-products-initialize200-response.ts
+models/post-action-shop-create-test-products-request.ts
+models/post-action-shop-create-test-products200-response.ts
 models/shop-info200-response.ts
 models/shop-toggle-sandbox-mode-request.ts
 models/shop-toggle-sandbox-mode200-response.ts

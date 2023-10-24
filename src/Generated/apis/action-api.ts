@@ -27,6 +27,14 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { ErrorResponse } from '../models';
 // @ts-ignore
+import { PostActionShopCreateTestProducts200Response } from '../models';
+// @ts-ignore
+import { PostActionShopCreateTestProductsCleanup200Response } from '../models';
+// @ts-ignore
+import { PostActionShopCreateTestProductsInitialize200Response } from '../models';
+// @ts-ignore
+import { PostActionShopCreateTestProductsRequest } from '../models';
+// @ts-ignore
 import { ShopToggleSandboxMode200Response } from '../models';
 // @ts-ignore
 import { ShopToggleSandboxModeRequest } from '../models';
@@ -38,6 +46,138 @@ import { TestShopReset200Response } from '../models';
  */
 export const ActionApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Create test products for a shop
+         * @summary Create test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProducts: async (postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postActionShopCreateTestProductsRequest' is not null or undefined
+            assertParamExists('postActionShopCreateTestProducts', 'postActionShopCreateTestProductsRequest', postActionShopCreateTestProductsRequest)
+            const localVarPath = `/action/shop-create-test-products`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oAuthAuthorization required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oAuthAuthorization", [], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postActionShopCreateTestProductsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Execute the cleanup after the creation test products for a shop
+         * @summary Execute the cleanup after the creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProductsCleanup: async (postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postActionShopCreateTestProductsRequest' is not null or undefined
+            assertParamExists('postActionShopCreateTestProductsCleanup', 'postActionShopCreateTestProductsRequest', postActionShopCreateTestProductsRequest)
+            const localVarPath = `/action/shop-create-test-products/cleanup`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oAuthAuthorization required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oAuthAuthorization", [], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postActionShopCreateTestProductsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Execute the initialization before the creation test products for a shop
+         * @summary Execute the initialization for before creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProductsInitialize: async (postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postActionShopCreateTestProductsRequest' is not null or undefined
+            assertParamExists('postActionShopCreateTestProductsInitialize', 'postActionShopCreateTestProductsRequest', postActionShopCreateTestProductsRequest)
+            const localVarPath = `/action/shop-create-test-products/initialize`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oAuthAuthorization required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oAuthAuthorization", [], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postActionShopCreateTestProductsRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
@@ -175,6 +315,39 @@ export const ActionApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ActionApiAxiosParamCreator(configuration)
     return {
         /**
+         * Create test products for a shop
+         * @summary Create test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostActionShopCreateTestProducts200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Execute the cleanup after the creation test products for a shop
+         * @summary Execute the cleanup after the creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostActionShopCreateTestProductsCleanup200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Execute the initialization before the creation test products for a shop
+         * @summary Execute the initialization for before creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostActionShopCreateTestProductsInitialize200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
          * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
@@ -217,6 +390,36 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = ActionApiFp(configuration)
     return {
         /**
+         * Create test products for a shop
+         * @summary Create test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: any): AxiosPromise<PostActionShopCreateTestProducts200Response> {
+            return localVarFp.postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Execute the cleanup after the creation test products for a shop
+         * @summary Execute the cleanup after the creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: any): AxiosPromise<PostActionShopCreateTestProductsCleanup200Response> {
+            return localVarFp.postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Execute the initialization before the creation test products for a shop
+         * @summary Execute the initialization for before creation test products for a shop
+         * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: any): AxiosPromise<PostActionShopCreateTestProductsInitialize200Response> {
+            return localVarFp.postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Toggle sandbox mode for a shop.
          * @summary Toggle sandbox mode for a shop.
          * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
@@ -255,6 +458,36 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
  */
 export interface ActionApiInterface {
     /**
+     * Create test products for a shop
+     * @summary Create test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApiInterface
+     */
+    postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): AxiosPromise<PostActionShopCreateTestProducts200Response>;
+
+    /**
+     * Execute the cleanup after the creation test products for a shop
+     * @summary Execute the cleanup after the creation test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApiInterface
+     */
+    postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): AxiosPromise<PostActionShopCreateTestProductsCleanup200Response>;
+
+    /**
+     * Execute the initialization before the creation test products for a shop
+     * @summary Execute the initialization for before creation test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApiInterface
+     */
+    postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): AxiosPromise<PostActionShopCreateTestProductsInitialize200Response>;
+
+    /**
      * Toggle sandbox mode for a shop.
      * @summary Toggle sandbox mode for a shop.
      * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
@@ -292,6 +525,42 @@ export interface ActionApiInterface {
  * @extends {BaseAPI}
  */
 export class ActionApi extends BaseAPI implements ActionApiInterface {
+    /**
+     * Create test products for a shop
+     * @summary Create test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApi
+     */
+    public postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).postActionShopCreateTestProducts(postActionShopCreateTestProductsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Execute the cleanup after the creation test products for a shop
+     * @summary Execute the cleanup after the creation test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApi
+     */
+    public postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).postActionShopCreateTestProductsCleanup(postActionShopCreateTestProductsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Execute the initialization before the creation test products for a shop
+     * @summary Execute the initialization for before creation test products for a shop
+     * @param {PostActionShopCreateTestProductsRequest} postActionShopCreateTestProductsRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApi
+     */
+    public postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Toggle sandbox mode for a shop.
      * @summary Toggle sandbox mode for a shop.
