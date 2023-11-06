@@ -44,5 +44,11 @@ export interface ShopInfo200Response {
      * @memberof ShopInfo200Response
      */
     'isShopInSandboxMode'?: boolean;
+    /**
+     * IsCreateTestProductsInitialized
+     * @type {boolean}
+     * @memberof ShopInfo200Response
+     */
+    'isCreateTestProductsInitialized'?: boolean;
 }
 
