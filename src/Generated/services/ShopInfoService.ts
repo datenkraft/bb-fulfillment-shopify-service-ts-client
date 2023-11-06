@@ -33,6 +33,10 @@ export class ShopInfoService {
          * IsShopInSandboxMode
          */
         isShopInSandboxMode?: boolean,
+        /**
+         * IsCreateTestProductsInitialized
+         */
+        isCreateTestProductsInitialized?: boolean,
     } | errorResponse> {
         const result = await __request({
             method: 'GET',
