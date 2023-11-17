@@ -37,6 +37,10 @@ export class ShopInfoService {
          * IsCreateTestProductsInitialized
          */
         isCreateTestProductsInitialized?: boolean,
+        /**
+         * IsSessionInvalid
+         */
+        isSessionInvalid?: boolean,
     } | errorResponse> {
         const result = await __request({
             method: 'GET',
