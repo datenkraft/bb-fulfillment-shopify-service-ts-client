@@ -50,5 +50,11 @@ export interface ShopInfo200Response {
      * @memberof ShopInfo200Response
      */
     'isCreateTestProductsInitialized'?: boolean;
+    /**
+     * IsSessionInvalid
+     * @type {boolean}
+     * @memberof ShopInfo200Response
+     */
+    'isSessionInvalid'?: boolean;
 }
 
