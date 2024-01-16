@@ -21,7 +21,7 @@
  */
 export interface ShopToggleSandboxMode200Response {
     /**
-     * ShopCode
+     * shopCode
      * @type {string}
      * @memberof ShopToggleSandboxMode200Response
      */
