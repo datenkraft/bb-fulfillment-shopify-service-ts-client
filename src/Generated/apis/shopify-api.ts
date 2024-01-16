@@ -92,7 +92,7 @@ export const ShopifyApiAxiosParamCreator = function (configuration?: Configurati
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers.     The maximum number of productNumbers allowed is 100.     The values must be separated by a comma.
+         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -166,7 +166,7 @@ export const ShopifyApiFp = function(configuration?: Configuration) {
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers.     The maximum number of productNumbers allowed is 100.     The values must be separated by a comma.
+         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -199,7 +199,7 @@ export const ShopifyApiFactory = function (configuration?: Configuration, basePa
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers.     The maximum number of productNumbers allowed is 100.     The values must be separated by a comma.
+         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -230,7 +230,7 @@ export interface ShopifyApiInterface {
      * Get a list of Product Variants.
      * @summary Get a list of Product Variants.
      * @param {string} shopifyShopDomain shopifyShopDomain
-     * @param {string} filterProductNumbers Filter for productNumber/productNumbers.     The maximum number of productNumbers allowed is 100.     The values must be separated by a comma.
+     * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShopifyApiInterface
@@ -263,7 +263,7 @@ export class ShopifyApi extends BaseAPI implements ShopifyApiInterface {
      * Get a list of Product Variants.
      * @summary Get a list of Product Variants.
      * @param {string} shopifyShopDomain shopifyShopDomain
-     * @param {string} filterProductNumbers Filter for productNumber/productNumbers.     The maximum number of productNumbers allowed is 100.     The values must be separated by a comma.
+     * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShopifyApi

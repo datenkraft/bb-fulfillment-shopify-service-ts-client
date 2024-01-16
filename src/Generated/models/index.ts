@@ -32,4 +32,5 @@ export * from './shopify-inventory-item';
 export * from './shopify-inventory-item-collection';
 export * from './shopify-product-variant';
 export * from './shopify-product-variant-collection';
+export * from './test-shop-register200-response';
 export * from './test-shop-reset200-response';

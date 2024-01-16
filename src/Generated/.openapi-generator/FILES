@@ -50,4 +50,5 @@ models/shopify-inventory-item-collection.ts
 models/shopify-inventory-item.ts
 models/shopify-product-variant-collection.ts
 models/shopify-product-variant.ts
+models/test-shop-register200-response.ts
 models/test-shop-reset200-response.ts

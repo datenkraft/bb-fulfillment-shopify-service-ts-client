@@ -39,6 +39,8 @@ import { ShopToggleSandboxMode200Response } from '../models';
 // @ts-ignore
 import { ShopToggleSandboxModeRequest } from '../models';
 // @ts-ignore
+import { TestShopRegister200Response } from '../models';
+// @ts-ignore
 import { TestShopReset200Response } from '../models';
 /**
  * ActionApi - axios parameter creator
@@ -365,7 +367,7 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode200Response>> {
+        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopRegister200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(shopToggleSandboxModeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -436,7 +438,7 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode200Response> {
+        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<TestShopRegister200Response> {
             return localVarFp.testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -505,7 +507,7 @@ export interface ActionApiInterface {
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode200Response>;
+    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<TestShopRegister200Response>;
 
     /**
      * Reset all test shops.
