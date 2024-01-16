@@ -11,7 +11,7 @@ export class ActionService {
      * Create test products for a shop
      * @param requestBody
      * @returns any OK
-     * @returns errorResponse Unexpected Error
+     * @returns errorResponse Unexpected error
      * @throws ApiError
      */
     public static async postActionShopCreateTestProducts(
@@ -32,11 +32,29 @@ export class ActionService {
             path: `/action/shop-create-test-products`,
             body: requestBody,
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                422: `Unprocessable Entity`,
-                500: `Server Error`,
+                400: `Bad Request
+                 *
+                 * Error codes:
+                 * - DATA_INVALID: Invalid data was given.`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - CREATE_TEST_PRODUCTS_INVALID_SHOP: Creation of test products is not available for the given shop .
+                 * - CREATE_TEST_PRODUCTS_NOT_INITIALIZED: Action is not initialized for the given shop.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
@@ -47,7 +65,7 @@ export class ActionService {
      * Execute the cleanup after the creation test products for a shop
      * @param requestBody
      * @returns any OK
-     * @returns errorResponse Unexpected Error
+     * @returns errorResponse Unexpected error
      * @throws ApiError
      */
     public static async postActionShopCreateTestProductsCleanup(
@@ -68,11 +86,28 @@ export class ActionService {
             path: `/action/shop-create-test-products/cleanup`,
             body: requestBody,
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                422: `Unprocessable Entity`,
-                500: `Server Error`,
+                400: `Bad Request
+                 *
+                 * Error codes:
+                 * - DATA_INVALID: Invalid data was given.`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - CREATE_TEST_PRODUCTS_ALREADY_CLEANED_UP: Test products are already cleaned up.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
@@ -83,7 +118,7 @@ export class ActionService {
      * Execute the initialization before the creation test products for a shop
      * @param requestBody
      * @returns any OK
-     * @returns errorResponse Unexpected Error
+     * @returns errorResponse Unexpected error
      * @throws ApiError
      */
     public static async postActionShopCreateTestProductsInitialize(
@@ -104,11 +139,28 @@ export class ActionService {
             path: `/action/shop-create-test-products/initialize`,
             body: requestBody,
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                422: `Unprocessable Entity`,
-                500: `Server Error`,
+                400: `Bad Request
+                 *
+                 * Error codes:
+                 * - DATA_INVALID: Invalid data was given.`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - CREATE_TEST_PRODUCTS_ALREADY_INITIALIZED: Test products are already initialized.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
@@ -131,7 +183,7 @@ export class ActionService {
         },
     ): Promise<{
         /**
-         * ShopCode
+         * shopCode
          */
         shopCode?: string,
     } | errorResponse> {
@@ -140,11 +192,28 @@ export class ActionService {
             path: `/action/shop-toggle-sandbox-mode`,
             body: requestBody,
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                422: `Unprocessable Entity`,
-                500: `Server error`,
+                400: `Bad Request
+                 *
+                 * Error codes:
+                 * - DATA_INVALID: Invalid data was given.`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - SANDBOX_MODE_TOGGLE_FAILED: Toggle Sandbox mode failed.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
@@ -176,11 +245,28 @@ export class ActionService {
             path: `/action/test-shop-register`,
             body: requestBody,
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                422: `Unprocessable Entity`,
-                500: `Server error`,
+                400: `Bad Request
+                 *
+                 * Error codes:
+                 * - DATA_INVALID: Invalid data was given.`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - TEST_SHOP_REGISTRATION_FAILED: Registration of the test shop failed.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
@@ -203,9 +289,24 @@ export class ActionService {
             method: 'POST',
             path: `/action/test-shop-reset`,
             errors: {
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                500: `Server error`,
+                401: `Unauthorized
+                 *
+                 * Error codes:
+                 * - AUTHORIZATION_MISSING: No valid authentication information was given.`,
+                403: `Forbidden
+                 *
+                 * Error codes:
+                 * - PERMISSIONS_MISSING: No authorization for the called action was found.`,
+                422: `Unprocessable Entity
+                 *
+                 * Error codes:
+                 * - DATA_NOT_PROCESSABLE: The given data is not processable.
+                 * - DATA_NOT_FOUND: The requested data could not be found.
+                 * - TEST_SHOP_RESET_FAILED: Reset of the test shop failed.`,
+                500: `Server error
+                 *
+                 * Error codes:
+                 * - SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.`,
             },
         });
         return result.body;
