@@ -92,15 +92,13 @@ export const ShopifyApiAxiosParamCreator = function (configuration?: Configurati
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
+         * @param {string} [filterProductNumbers] Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getShopifyProductVariantCollection: async (shopifyShopDomain: string, filterProductNumbers: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getShopifyProductVariantCollection: async (shopifyShopDomain: string, filterProductNumbers?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'shopifyShopDomain' is not null or undefined
             assertParamExists('getShopifyProductVariantCollection', 'shopifyShopDomain', shopifyShopDomain)
-            // verify required parameter 'filterProductNumbers' is not null or undefined
-            assertParamExists('getShopifyProductVariantCollection', 'filterProductNumbers', filterProductNumbers)
             const localVarPath = `/shopify/products/variants`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -166,11 +164,11 @@ export const ShopifyApiFp = function(configuration?: Configuration) {
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
+         * @param {string} [filterProductNumbers] Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopifyProductVariantCollection>> {
+        async getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopifyProductVariantCollection>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getShopifyProductVariantCollection(shopifyShopDomain, filterProductNumbers, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -199,11 +197,11 @@ export const ShopifyApiFactory = function (configuration?: Configuration, basePa
          * Get a list of Product Variants.
          * @summary Get a list of Product Variants.
          * @param {string} shopifyShopDomain shopifyShopDomain
-         * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
+         * @param {string} [filterProductNumbers] Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers: string, options?: any): AxiosPromise<ShopifyProductVariantCollection> {
+        getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers?: string, options?: any): AxiosPromise<ShopifyProductVariantCollection> {
             return localVarFp.getShopifyProductVariantCollection(shopifyShopDomain, filterProductNumbers, options).then((request) => request(axios, basePath));
         },
     };
@@ -230,12 +228,12 @@ export interface ShopifyApiInterface {
      * Get a list of Product Variants.
      * @summary Get a list of Product Variants.
      * @param {string} shopifyShopDomain shopifyShopDomain
-     * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
+     * @param {string} [filterProductNumbers] Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShopifyApiInterface
      */
-    getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers: string, options?: AxiosRequestConfig): AxiosPromise<ShopifyProductVariantCollection>;
+    getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers?: string, options?: AxiosRequestConfig): AxiosPromise<ShopifyProductVariantCollection>;
 
 }
 
@@ -263,12 +261,12 @@ export class ShopifyApi extends BaseAPI implements ShopifyApiInterface {
      * Get a list of Product Variants.
      * @summary Get a list of Product Variants.
      * @param {string} shopifyShopDomain shopifyShopDomain
-     * @param {string} filterProductNumbers Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
+     * @param {string} [filterProductNumbers] Filter for productNumber/productNumbers. The maximum number of productNumbers allowed is 100. The values must be separated by a comma.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ShopifyApi
      */
-    public getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers: string, options?: AxiosRequestConfig) {
+    public getShopifyProductVariantCollection(shopifyShopDomain: string, filterProductNumbers?: string, options?: AxiosRequestConfig) {
         return ShopifyApiFp(this.configuration).getShopifyProductVariantCollection(shopifyShopDomain, filterProductNumbers, options).then((request) => request(this.axios, this.basePath));
     }
 }
