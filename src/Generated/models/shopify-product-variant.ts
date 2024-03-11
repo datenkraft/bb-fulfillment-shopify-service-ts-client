@@ -43,12 +43,12 @@ export interface ShopifyProductVariant {
      * @type {string}
      * @memberof ShopifyProductVariant
      */
-    'title'?: string;
+    'title'?: string | null;
     /**
      * product number
      * @type {string}
      * @memberof ShopifyProductVariant
      */
-    'productNumber'?: string;
+    'productNumber'?: string | null;
 }
 
