@@ -17,14 +17,14 @@
 /**
  * 
  * @export
- * @interface TestShopReset200Response
+ * @interface ShopClearCacheRequest
  */
-export interface TestShopReset200Response {
+export interface ShopClearCacheRequest {
     /**
-     * Date. Format in ISO 8601.
+     * shopifyShopDomain
      * @type {string}
-     * @memberof TestShopReset200Response
+     * @memberof ShopClearCacheRequest
      */
-    'date'?: string;
+    'shopifyShopDomain'?: string;
 }
 

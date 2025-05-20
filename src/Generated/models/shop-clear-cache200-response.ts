@@ -17,14 +17,14 @@
 /**
  * 
  * @export
- * @interface ShopToggleSandboxModeRequest
+ * @interface ShopClearCache200Response
  */
-export interface ShopToggleSandboxModeRequest {
+export interface ShopClearCache200Response {
     /**
-     * shopifyShopDomain
+     * Date. Format in ISO 8601.
      * @type {string}
-     * @memberof ShopToggleSandboxModeRequest
+     * @memberof ShopClearCache200Response
      */
-    'shopifyShopDomain'?: string;
+    'date'?: string;
 }
 

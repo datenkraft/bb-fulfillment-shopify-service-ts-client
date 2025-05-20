@@ -35,13 +35,13 @@ import { PostActionShopCreateTestProductsInitialize200Response } from '../models
 // @ts-ignore
 import { PostActionShopCreateTestProductsRequest } from '../models';
 // @ts-ignore
+import { ShopClearCache200Response } from '../models';
+// @ts-ignore
+import { ShopClearCacheRequest } from '../models';
+// @ts-ignore
 import { ShopToggleSandboxMode200Response } from '../models';
 // @ts-ignore
-import { ShopToggleSandboxModeRequest } from '../models';
-// @ts-ignore
 import { TestShopRegister200Response } from '../models';
-// @ts-ignore
-import { TestShopReset200Response } from '../models';
 /**
  * ActionApi - axios parameter creator
  * @export
@@ -181,15 +181,57 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Toggle sandbox mode for a shop.
-         * @summary Toggle sandbox mode for a shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * Clear shop cache.
+         * @summary Clear shop cache.
+         * @param {ShopClearCacheRequest} [shopClearCacheRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        shopToggleSandboxMode: async (shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'shopToggleSandboxModeRequest' is not null or undefined
-            assertParamExists('shopToggleSandboxMode', 'shopToggleSandboxModeRequest', shopToggleSandboxModeRequest)
+        shopClearCache: async (shopClearCacheRequest?: ShopClearCacheRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/action/shop-clear-cache`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oAuthAuthorization required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oAuthAuthorization", [], configuration)
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(shopClearCacheRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Toggle sandbox mode for a shop.
+         * @summary Toggle sandbox mode for a shop.
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        shopToggleSandboxMode: async (shopClearCacheRequest: ShopClearCacheRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'shopClearCacheRequest' is not null or undefined
+            assertParamExists('shopToggleSandboxMode', 'shopClearCacheRequest', shopClearCacheRequest)
             const localVarPath = `/action/shop-toggle-sandbox-mode`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -217,7 +259,7 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(shopToggleSandboxModeRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(shopClearCacheRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -227,13 +269,13 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister: async (shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'shopToggleSandboxModeRequest' is not null or undefined
-            assertParamExists('testShopRegister', 'shopToggleSandboxModeRequest', shopToggleSandboxModeRequest)
+        testShopRegister: async (shopClearCacheRequest: ShopClearCacheRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'shopClearCacheRequest' is not null or undefined
+            assertParamExists('testShopRegister', 'shopClearCacheRequest', shopClearCacheRequest)
             const localVarPath = `/action/test-shop-register`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -261,7 +303,7 @@ export const ActionApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(shopToggleSandboxModeRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(shopClearCacheRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -350,25 +392,36 @@ export const ActionApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Toggle sandbox mode for a shop.
-         * @summary Toggle sandbox mode for a shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * Clear shop cache.
+         * @summary Clear shop cache.
+         * @param {ShopClearCacheRequest} [shopClearCacheRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.shopToggleSandboxMode(shopToggleSandboxModeRequest, options);
+        async shopClearCache(shopClearCacheRequest?: ShopClearCacheRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopClearCache200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.shopClearCache(shopClearCacheRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Toggle sandbox mode for a shop.
+         * @summary Toggle sandbox mode for a shop.
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async shopToggleSandboxMode(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopToggleSandboxMode200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.shopToggleSandboxMode(shopClearCacheRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopRegister200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(shopToggleSandboxModeRequest, options);
+        async testShopRegister(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopRegister200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.testShopRegister(shopClearCacheRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -377,7 +430,7 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testShopReset(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TestShopReset200Response>> {
+        async testShopReset(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ShopClearCache200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.testShopReset(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -422,24 +475,34 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * Toggle sandbox mode for a shop.
-         * @summary Toggle sandbox mode for a shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * Clear shop cache.
+         * @summary Clear shop cache.
+         * @param {ShopClearCacheRequest} [shopClearCacheRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<ShopToggleSandboxMode200Response> {
-            return localVarFp.shopToggleSandboxMode(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
+        shopClearCache(shopClearCacheRequest?: ShopClearCacheRequest, options?: any): AxiosPromise<ShopClearCache200Response> {
+            return localVarFp.shopClearCache(shopClearCacheRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Toggle sandbox mode for a shop.
+         * @summary Toggle sandbox mode for a shop.
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        shopToggleSandboxMode(shopClearCacheRequest: ShopClearCacheRequest, options?: any): AxiosPromise<ShopToggleSandboxMode200Response> {
+            return localVarFp.shopToggleSandboxMode(shopClearCacheRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Try to register shopify as a test shop.
          * @summary Try to register shopify as a test shop.
-         * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+         * @param {ShopClearCacheRequest} shopClearCacheRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: any): AxiosPromise<TestShopRegister200Response> {
-            return localVarFp.testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(axios, basePath));
+        testShopRegister(shopClearCacheRequest: ShopClearCacheRequest, options?: any): AxiosPromise<TestShopRegister200Response> {
+            return localVarFp.testShopRegister(shopClearCacheRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Reset all test shops.
@@ -447,7 +510,7 @@ export const ActionApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testShopReset(options?: any): AxiosPromise<TestShopReset200Response> {
+        testShopReset(options?: any): AxiosPromise<ShopClearCache200Response> {
             return localVarFp.testShopReset(options).then((request) => request(axios, basePath));
         },
     };
@@ -490,24 +553,34 @@ export interface ActionApiInterface {
     postActionShopCreateTestProductsInitialize(postActionShopCreateTestProductsRequest: PostActionShopCreateTestProductsRequest, options?: AxiosRequestConfig): AxiosPromise<PostActionShopCreateTestProductsInitialize200Response>;
 
     /**
-     * Toggle sandbox mode for a shop.
-     * @summary Toggle sandbox mode for a shop.
-     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+     * Clear shop cache.
+     * @summary Clear shop cache.
+     * @param {ShopClearCacheRequest} [shopClearCacheRequest] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode200Response>;
+    shopClearCache(shopClearCacheRequest?: ShopClearCacheRequest, options?: AxiosRequestConfig): AxiosPromise<ShopClearCache200Response>;
+
+    /**
+     * Toggle sandbox mode for a shop.
+     * @summary Toggle sandbox mode for a shop.
+     * @param {ShopClearCacheRequest} shopClearCacheRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApiInterface
+     */
+    shopToggleSandboxMode(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig): AxiosPromise<ShopToggleSandboxMode200Response>;
 
     /**
      * Try to register shopify as a test shop.
      * @summary Try to register shopify as a test shop.
-     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+     * @param {ShopClearCacheRequest} shopClearCacheRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig): AxiosPromise<TestShopRegister200Response>;
+    testShopRegister(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig): AxiosPromise<TestShopRegister200Response>;
 
     /**
      * Reset all test shops.
@@ -516,7 +589,7 @@ export interface ActionApiInterface {
      * @throws {RequiredError}
      * @memberof ActionApiInterface
      */
-    testShopReset(options?: AxiosRequestConfig): AxiosPromise<TestShopReset200Response>;
+    testShopReset(options?: AxiosRequestConfig): AxiosPromise<ShopClearCache200Response>;
 
 }
 
@@ -564,27 +637,39 @@ export class ActionApi extends BaseAPI implements ActionApiInterface {
     }
 
     /**
-     * Toggle sandbox mode for a shop.
-     * @summary Toggle sandbox mode for a shop.
-     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+     * Clear shop cache.
+     * @summary Clear shop cache.
+     * @param {ShopClearCacheRequest} [shopClearCacheRequest] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public shopToggleSandboxMode(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig) {
-        return ActionApiFp(this.configuration).shopToggleSandboxMode(shopToggleSandboxModeRequest, options).then((request) => request(this.axios, this.basePath));
+    public shopClearCache(shopClearCacheRequest?: ShopClearCacheRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).shopClearCache(shopClearCacheRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Toggle sandbox mode for a shop.
+     * @summary Toggle sandbox mode for a shop.
+     * @param {ShopClearCacheRequest} shopClearCacheRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActionApi
+     */
+    public shopToggleSandboxMode(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).shopToggleSandboxMode(shopClearCacheRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Try to register shopify as a test shop.
      * @summary Try to register shopify as a test shop.
-     * @param {ShopToggleSandboxModeRequest} shopToggleSandboxModeRequest 
+     * @param {ShopClearCacheRequest} shopClearCacheRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public testShopRegister(shopToggleSandboxModeRequest: ShopToggleSandboxModeRequest, options?: AxiosRequestConfig) {
-        return ActionApiFp(this.configuration).testShopRegister(shopToggleSandboxModeRequest, options).then((request) => request(this.axios, this.basePath));
+    public testShopRegister(shopClearCacheRequest: ShopClearCacheRequest, options?: AxiosRequestConfig) {
+        return ActionApiFp(this.configuration).testShopRegister(shopClearCacheRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
