@@ -7,13 +7,12 @@ describe("Client Test (staging)", () => {
     const configOptions: ConfigOptions = {
       clientId: process.env.DEV_CLIENT_ID ?? "",
       clientSecret: process.env.DEV_CLIENT_SECRET_STAGING ?? "",
-      oAuthTokenHost:
-        "https://authentication-api.staging.backbone.datenkraft.info",
+      oAuthTokenHost: "https://authentication-api.sandbox.steve.niceshops.com",
     };
 
     FulfillmentShopifyServiceClient.getApiConfig(
       configOptions,
-      "https://fulfillment-service-sy.staging.backbone.datenkraft.info/v1"
+      "https://fulfillment-service-sy.steve.niceshops.com/v1"
     )
       .then((config) => {
         const authRoleApi = new AuthRoleApi(config);
