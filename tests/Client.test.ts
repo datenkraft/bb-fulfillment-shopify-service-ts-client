@@ -12,7 +12,7 @@ describe("Client Test (staging)", () => {
 
     FulfillmentShopifyServiceClient.getApiConfig(
       configOptions,
-      "https://fulfillment-service-sy.steve.niceshops.com/v1"
+      "https://fulfillment-service-sy.sandbox.steve.niceshops.com/v1"
     )
       .then((config) => {
         const authRoleApi = new AuthRoleApi(config);
